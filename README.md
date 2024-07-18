@@ -3,11 +3,11 @@
 
 ### Sky130 Day 1: Introduction to Open-Source EDA, OpenLANE, and Sky130 PDK
 
-### Session 1: Communicating with Computers (SKY130_D1_SK1)
+### Session 1: Communicating with Computers 
 An exploration of the foundational principles of how computers interpret and execute instructions, essential for understanding hardware design and development. The session included examples using Arduino ICs and outlined the specific areas of focus for the workshop.
 
 
-#### Overview of QFN-48 Package, Chip, Pads, Core, Die, and IPs (SKY_L1)
+#### Overview of QFN-48 Package, Chip, Pads, Core, Die, and IPs 
 An introduction to the QFN-48 package, covering its components including the chip, pads, core, die, and intellectual properties (IPs).
 | ![image](https://github.com/user-attachments/assets/d561bf42-1f37-4813-bd08-3f448210c9f1) | ![image](https://github.com/user-attachments/assets/d32de5bb-2ba1-4b8f-9456-b19df112f707) |
 |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
@@ -16,14 +16,13 @@ An introduction to the QFN-48 package, covering its components including the chi
 A comprehensive look at the RISC-V architecture, its design principles, and its significance in modern hardware development.
 The session provided a detailed analysis of RISC-V instruction sets, the critical role of the compiler in the development process, and the methodology for converting the PicoRV32 RTL (Register Transfer Level) core into physical layout and hardware implementation.
 
-<img src="https://github.com/user-attachments/assets/8d7b3ccc-f550-4d0f-b01b-60d48a73419e" alt="image" width="800">
+<img src="https://github.com/user-attachments/assets/8d7b3ccc-f550-4d0f-b01b-60d48a73419e" alt="image" width="700">
 
-
-
-#### Transitioning from Software Applications to Hardware (SKY_L3)
+#### Transitioning from Software Applications to Hardware 
 A discussion on how software applications are translated into hardware implementations, emphasizing the importance of understanding both software and hardware paradigms.
 
-<img src="https://github.com/user-attachments/assets/e8217f52-880c-4d84-80df-1bdd2d1c6631" alt="image" width="800">
+<img src="https://github.com/user-attachments/assets/e8217f52-880c-4d84-80df-1bdd2d1c6631" alt="image" width="700">
+
 
 ### Session 2: Introduction to SoC design and OpenLANE
 An overview of the various components involved in the open-source digital ASIC design process, providing foundational knowledge necessary for understanding the entire design flow.
@@ -86,7 +85,113 @@ A streamlined explanation of the RTL (Register Transfer Level) to GDSII (Graphic
     - Analyze power consumption and distribution.
   - **Physical Verification:**
     - Ensure layout is defect-free and meets reliability criteria.
+      
+### Session 3: OpenLANE Directory Structure
+
+
+| ![image](https://github.com/user-attachments/assets/cfd931ff-9322-48b3-8ffe-4f364d0df8c5) | ![image](https://github.com/user-attachments/assets/85101707-fbe5-49c5-88c4-a6cfc60f1ad3) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+    
+        cd Desktop/work/tools               # Navigate to the tools directory
+        cd openlane_working_dir             # Move to the openlane_working_dir directory
+        cd pdks/sky130A/                    # Navigate to the sky130A directory within pdks
+        ls -ltr                             # List files in sky130A directory (reverse chronological order)
+        cd libs.ref                         # all process specific files
+        ls -ltr                             # List files in libs.ref directory
+        cd ../libs.tech                     # Move to libs.tech directory (files specific to the tools)
+        ls -ltr                             # List files in libs.tech directory
+     
+
+
+- **Introduction to the SkyWater 130nm PDK:**
+  Explored the features and components of the SkyWater 130nm Process Design Kit (PDK), detailing its specifications and capabilities for semiconductor design.
+
+- **Significance of Open PDKs in Silicon Foundry Files:**
+  Discussed the importance of open Process Design Kits (PDKs) in providing accessible semiconductor manufacturing files, compatible with commercial Electronic Design Automation (EDA) tools.
+
+- **Importance of libs.ref and libs.tech:**
+  Emphasized the critical role of `libs.ref` (reference libraries) and `libs.tech` (technology libraries) in standardizing design components and process parameters within the EDA toolchain, ensuring consistency and compatibility across design phases.
+
+- **sky130_fd_sc_hd Library:**
+  Utilizes the `sky130_fd_sc_hd` library, where "hd" signifies high density. This library offers optimized standard cells designed to maximize packing density while maintaining performance, tailored for various digital design applications within the SkyWater 130nm Process Design Kit (PDK).
+
+####  Commands to invoke OpenLANE:
+To get into the openlane directory and invoke OpenLANE type following commands:
+
+    
+        cd Desktop/work/tools               # Navigate to the tools directory
+        cd openlane_working_dir             # Move to the openlane_working_dir directory
+        cd openlane
+        docker                              # Launch Docker to run OpenLANE
+        ls -ltr
+        ./flow.tcl -interactive
+     
+<img src="https://github.com/user-attachments/assets/7a2f40f6-13bf-46b0-8a63-e07f4160b665" alt="image" width="700">
+
+**Steps involved in preparing for the design process:**
+
+    
+        package require openlane 0.9
+        prep - design picorv32a
+        run_synthesis
    
+
+    
+  ![image](https://github.com/user-attachments/assets/53a0ab0e-7fa4-4c37-8424-45f052c10980)
+  ![image](https://github.com/user-attachments/assets/20c5a347-db56-4e8c-b78d-9805f447bda3)
+
+   | ![image](https://github.com/user-attachments/assets/c04363c1-58c0-4a48-a097-e55f1dd7b7a2) | ![image](https://github.com/user-attachments/assets/5a786780-aaa2-42e1-9ed0-04877e8d6e37) |
+  |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+
+ ### Sky130 Day 2: Good floorplan vs bad floorplan and introduction to library cells
+ ### Session 1: Chip Floor Planning Considerations**
+
+  1. **Define Width and Height of Core and Die:**
+     - Establish core and die dimensions to fit the design within the chip's physical constraints.
+     - Ensure that the aspect ratio aligns with design and manufacturing requirements for optimal layout.
+
+  2. **Define Location of Pre-placed Cells:**
+     - Position essential cells before automated placement to meet design constraints and functionality.
+     - Ensure critical components are placed in locations that support optimal performance and connectivity.
+
+  3. **Surround Pre-placed Cells with Decoupling Capacitors:**
+     - Place capacitors around pre-placed cells to stabilize power and mitigate noise interference.
+     - Ensure adequate coverage to prevent power supply issues and maintain signal integrity.
+
+  4. **Power Planning:**
+     - Design a robust power distribution network to ensure stable power delivery across the chip.
+     - Address potential voltage drop and noise issues by strategically placing power pads and distribution elements.
+
+  5. **Pin Placement:**
+     - Optimize pin locations to facilitate efficient signal routing and minimize congestion.
+     - Ensure that pin placement supports effective connectivity and meets design requirements.
+
+  6. **Logical Cell Placement Blockage:**
+     - Define areas where logical cells cannot be placed to avoid interference with critical paths.
+     - Ensure that blockages do not hinder the placement of essential cells and that routing is feasible.
+    
+    
+|![image](https://github.com/user-attachments/assets/8172f17f-1d2b-432d-bdb8-15f21371b202) | ![image](https://github.com/user-attachments/assets/a2841ce0-0cba-4003-a5d5-322935c8bbac) |
+ |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+
+![image](https://github.com/user-attachments/assets/7d90293c-9079-4c35-b565-e1cc250b9868)
+![image](https://github.com/user-attachments/assets/485d7563-379a-4828-af8b-93ef73708804)
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
   
 
 
