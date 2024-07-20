@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f9d5f531-3540-4079-85a4-99e15380b360)# SoC_Design_and_Planning_NASSCOM_VSD
+# SoC_Design_and_Planning_NASSCOM_VSD
 #####  A two-week workshop on digital VLSI SoC design and planning, covering the complete RTL to GDSII flow, organized by VSD in collaboration with NASSCOM.
 
 ### Sky130 Day 1: Introduction to Open-Source EDA, OpenLANE, and Sky130 PDK
@@ -195,15 +195,51 @@ To get into the openlane directory and invoke OpenLANE type following commands:
 
 ![image](https://github.com/user-attachments/assets/c4cdd78d-0012-4c91-9596-b3bd2a87aa7d)
 ![image](https://github.com/user-attachments/assets/678ae32b-4fdb-48f2-ae7c-0d9c53ea8c34)
+![image](https://github.com/user-attachments/assets/f9d5f531-3540-4079-85a4-99e15380b360)
 
-CMOS Fabrication
+### Session 2: Inception of Layout and CMOS Fabrication process
 | ![image](https://github.com/user-attachments/assets/b2bcc12b-fee0-4182-bde5-65c87dff4217) | ![image](https://github.com/user-attachments/assets/6b40e926-b694-46b9-afb8-b47a9ea5b788) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
-![image](https://github.com/user-attachments/assets/05d316df-c5bd-4e2a-8e9d-8266d748a0de)
-![image](https://github.com/user-attachments/assets/ffa4f4cd-4020-4db5-9bf2-60992b4f4d94)
-![image](https://github.com/user-attachments/assets/d07cd9c0-126c-4507-8f81-78a5fc20f4cd)
+| ![image](https://github.com/user-attachments/assets/05d316df-c5bd-4e2a-8e9d-8266d748a0de) | ![image](https://github.com/user-attachments/assets/ffa4f4cd-4020-4db5-9bf2-60992b4f4d94) | 
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
-![image](https://github.com/user-attachments/assets/dd7103e6-167f-4245-a9a4-6f83adfd83ad)
+| ![image](https://github.com/user-attachments/assets/d07cd9c0-126c-4507-8f81-78a5fc20f4cd) | ![image](https://github.com/user-attachments/assets/dd7103e6-167f-4245-a9a4-6f83adfd83ad) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+- **16-mask CMOS Process**
+
+  1. **Selecting a Substrate:**
+     - Choose a high-purity silicon wafer as the starting material.
+     - Ensure the substrate has the appropriate doping type (p-type or n-type) to support the desired device characteristics.
+
+  2. **Creating an Active Region for Transistors:**
+     - Define the active regions using photolithography and etching to isolate transistors.
+     - Apply a field oxide layer to separate and protect these active regions.
+
+  3. **N-well and P-well Formation:**
+     - Use ion implantation to create n-well and p-well regions for NMOS and PMOS transistors, respectively.
+     - Perform a high-temperature annealing step to drive in and activate the dopants.
+
+  4. **Gate Formation:**
+     - Deposit a thin layer of gate oxide followed by a polysilicon layer.
+     - Pattern and etch the polysilicon to form the transistor gates, defining the channel length.
+
+  5. **Lightly Doped Drain Formation:**
+     - Perform ion implantation to create lightly doped drain (LDD) regions near the gate edges.
+     - This step helps to reduce the electric field and improve device performance.
+
+  6. **Source and Drain Formation:**
+     - Use ion implantation to heavily dope the source and drain regions, providing low-resistance contacts.
+     - Anneal the wafer to activate the dopants and repair implantation-induced damage.
+
+  7. **Steps to Form Contacts and Interconnects:**
+     - Deposit an insulating layer (e.g., silicon dioxide) and etch contact holes to the source, drain, and gate regions.
+     - Fill the contact holes with metal (e.g., aluminum or copper) to establish electrical connections.
+
+  8. **High-level Metal Formation:**
+     - Deposit and pattern multiple metal layers to create the interconnect network.
+     - Use dielectric layers between metal layers to insulate and protect the interconnects.
+
 
 
 lab
@@ -213,8 +249,20 @@ characterization
 ![image](https://github.com/user-attachments/assets/fde80788-a4e0-4af3-8c6d-b2c0cf5b56f0)
 ![image](https://github.com/user-attachments/assets/1ab0333e-0a4a-40fd-92ef-5a4e09f6d773)
 
+### Session 3: Tech file labs
+
 DRC
 ![image](https://github.com/user-attachments/assets/dd4a30a6-5663-4fb1-886c-8dd5dce5070f)
+![image](https://github.com/user-attachments/assets/16d39348-bc00-4f49-bd86-e0d96ec9a5ac)
+
+![image](https://github.com/user-attachments/assets/e3660b1b-a875-49e9-a8a6-06db6476bb5a)
+
+![image](https://github.com/user-attachments/assets/fc3483ea-df21-44e3-b4ed-f89dc8b324cf)
+
+![image](https://github.com/user-attachments/assets/787cf7ca-e085-4e89-a23a-a9e312493fe8)
+
+
+
 
 
 
