@@ -1,4 +1,4 @@
-# SoC_Design_and_Planning_NASSCOM_VSD
+![image](https://github.com/user-attachments/assets/f9d5f531-3540-4079-85a4-99e15380b360)# SoC_Design_and_Planning_NASSCOM_VSD
 #####  A two-week workshop on digital VLSI SoC design and planning, covering the complete RTL to GDSII flow, organized by VSD in collaboration with NASSCOM.
 
 ### Sky130 Day 1: Introduction to Open-Source EDA, OpenLANE, and Sky130 PDK
@@ -176,6 +176,65 @@ To get into the openlane directory and invoke OpenLANE type following commands:
 
 ![image](https://github.com/user-attachments/assets/7d90293c-9079-4c35-b565-e1cc250b9868)
 ![image](https://github.com/user-attachments/assets/485d7563-379a-4828-af8b-93ef73708804)
+
+ ### Sky130 Day 3: Good floorplan vs bad floorplan and introduction to library cells
+
+  >>![image](https://github.com/user-attachments/assets/f0b038c8-8760-4155-8b36-9f530e3211ef)
+
+ ![image](https://github.com/user-attachments/assets/f45f25a3-e98d-4867-ad6a-ff4b52d68be3)
+
+ spice simulations
+| ![image](https://github.com/user-attachments/assets/c7d13525-09f2-461a-a941-673ffa5fdb0a) | ![image](https://github.com/user-attachments/assets/f080f297-6be0-409b-b07f-b90557d4d7d3) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+
+| ![image](https://github.com/user-attachments/assets/78707a05-cc53-46e9-bd6d-67267d0b9b99) | ![image](https://github.com/user-attachments/assets/4636c08b-faf3-4c56-9b04-f8fba22713b0) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+
+| ![image](https://github.com/user-attachments/assets/6309301c-9e16-423e-b0d8-3780f1ab5cb0) | ![image](https://github.com/user-attachments/assets/2cb13adb-c7cc-429e-960f-d85d95b9c8d3) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+
+![image](https://github.com/user-attachments/assets/c4cdd78d-0012-4c91-9596-b3bd2a87aa7d)
+![image](https://github.com/user-attachments/assets/678ae32b-4fdb-48f2-ae7c-0d9c53ea8c34)
+
+CMOS Fabrication
+| ![image](https://github.com/user-attachments/assets/b2bcc12b-fee0-4182-bde5-65c87dff4217) | ![image](https://github.com/user-attachments/assets/6b40e926-b694-46b9-afb8-b47a9ea5b788) |
+
+![image](https://github.com/user-attachments/assets/05d316df-c5bd-4e2a-8e9d-8266d748a0de)
+![image](https://github.com/user-attachments/assets/ffa4f4cd-4020-4db5-9bf2-60992b4f4d94)
+![image](https://github.com/user-attachments/assets/d07cd9c0-126c-4507-8f81-78a5fc20f4cd)
+
+![image](https://github.com/user-attachments/assets/dd7103e6-167f-4245-a9a4-6f83adfd83ad)
+
+
+lab
+![image](https://github.com/user-attachments/assets/180e79a9-56f7-4b96-8e80-8c7f25ce3245)
+
+characterization
+![image](https://github.com/user-attachments/assets/fde80788-a4e0-4af3-8c6d-b2c0cf5b56f0)
+![image](https://github.com/user-attachments/assets/1ab0333e-0a4a-40fd-92ef-5a4e09f6d773)
+
+DRC
+![image](https://github.com/user-attachments/assets/dd4a30a6-5663-4fb1-886c-8dd5dce5070f)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
