@@ -177,13 +177,15 @@ To get into the openlane directory and invoke OpenLANE type following commands:
 ![image](https://github.com/user-attachments/assets/7d90293c-9079-4c35-b565-e1cc250b9868)
 ![image](https://github.com/user-attachments/assets/485d7563-379a-4828-af8b-93ef73708804)
 
- ### Sky130 Day 3: Good floorplan vs bad floorplan and introduction to library cells
-
-  >>![image](https://github.com/user-attachments/assets/f0b038c8-8760-4155-8b36-9f530e3211ef)
+ ### Sky130 Day 3: Design library cell using Magic layout and ngspice characteriztaion
+ 
+**IO Spacer Revision**
+ ![image](https://github.com/user-attachments/assets/f0b038c8-8760-4155-8b36-9f530e3211ef)
 
  ![image](https://github.com/user-attachments/assets/f45f25a3-e98d-4867-ad6a-ff4b52d68be3)
 
- spice simulations
+ **spice deck creation and simulations**
+ 
 | ![image](https://github.com/user-attachments/assets/c7d13525-09f2-461a-a941-673ffa5fdb0a) | ![image](https://github.com/user-attachments/assets/f080f297-6be0-409b-b07f-b90557d4d7d3) |
 |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
@@ -192,10 +194,47 @@ To get into the openlane directory and invoke OpenLANE type following commands:
 
 | ![image](https://github.com/user-attachments/assets/6309301c-9e16-423e-b0d8-3780f1ab5cb0) | ![image](https://github.com/user-attachments/assets/2cb13adb-c7cc-429e-960f-d85d95b9c8d3) |
 |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
-
-![image](https://github.com/user-attachments/assets/c4cdd78d-0012-4c91-9596-b3bd2a87aa7d)
-![image](https://github.com/user-attachments/assets/678ae32b-4fdb-48f2-ae7c-0d9c53ea8c34)
 ![image](https://github.com/user-attachments/assets/f9d5f531-3540-4079-85a4-99e15380b360)
+
+- **Circuit Description:**
+  - A SPICE deck is a text file that describes an electronic circuit's components and their interconnections. It includes elements such as resistors, capacitors, transistors, voltage sources, and more, each defined by specific syntax and parameters.
+
+- **Simulation Commands:**
+  - The SPICE deck contains control statements and commands that instruct the simulator on what type of analysis to perform, such as DC analysis, AC analysis, transient analysis, and more. These commands help in evaluating the circuit's behavior under different conditions.
+
+- **Model and Parameter Definitions:**
+  - The SPICE deck includes model definitions and parameter values for the components, specifying their electrical characteristics. This ensures accurate simulation results by providing detailed information about the devices used in the circuit.
+
+**Lab steps to git clone vsdstdcelldesign**
+```
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+![image](https://github.com/user-attachments/assets/c4cdd78d-0012-4c91-9596-b3bd2a87aa7d)
+
+![image](https://github.com/user-attachments/assets/69f4fa19-7916-4027-9628-5ef158a47cf5)
+
+PMOS source connectivity to VDD
+
+![image](https://github.com/user-attachments/assets/915ff727-0f93-454b-b715-f2d01c8cbb6b)
+
+![image](https://github.com/user-attachments/assets/678ae32b-4fdb-48f2-ae7c-0d9c53ea8c34)
+
 
 ### Session 2: Inception of Layout and CMOS Fabrication process
 | ![image](https://github.com/user-attachments/assets/b2bcc12b-fee0-4182-bde5-65c87dff4217) | ![image](https://github.com/user-attachments/assets/6b40e926-b694-46b9-afb8-b47a9ea5b788) |
@@ -242,24 +281,107 @@ To get into the openlane directory and invoke OpenLANE type following commands:
 
 
 
-lab
-![image](https://github.com/user-attachments/assets/180e79a9-56f7-4b96-8e80-8c7f25ce3245)
+**SPICE extraction of inverter in magic**
 
-characterization
-![image](https://github.com/user-attachments/assets/fde80788-a4e0-4af3-8c6d-b2c0cf5b56f0)
+![image](https://github.com/user-attachments/assets/180e79a9-56f7-4b96-8e80-8c7f25ce3245)
+```
+pwd
+
+# Extraction command to extract to .ext format
+extract all
+
+# Before converting ext to spice this command enable the parasitic extraction also
+ext2spice cthresh 0 rthresh 0
+
+# Converting to ext to spice
+ext2spice
+```
+**Creation of std cell layout and extract spice netlist**
+Spice File
+![image](https://github.com/user-attachments/assets/f723d947-ac3b-4e69-96bf-421d9f7653c5)
+
 ![image](https://github.com/user-attachments/assets/1ab0333e-0a4a-40fd-92ef-5a4e09f6d773)
 
-### Session 3: Tech file labs
+![image](https://github.com/user-attachments/assets/fde80788-a4e0-4af3-8c6d-b2c0cf5b56f0)
+![image](https://github.com/user-attachments/assets/f7ebe9ab-8b90-4887-aaa0-ef71fbcd37bd)
 
-DRC
+```
+#Rise Transistion time = Time taken for output to rise to 80% -Time taken for output to rise to 20%
+Rise Transition time = 2.24569 - 2.18206 = 63.63ps
+
+#Fall Transition Delay = Time taken for output to fall to 80% -Time taken for output to fall to 20%
+Fall Transition time = 4.1755 - 4.1337 = 41.8ps
+
+#Rise Cell Delay = Time taken for output to rise to 50% - Time taken for input to fall to 50%
+Rise Cell Delay time = 2.21093 - 2.14987 = 61ps
+
+#Fall Cell Delay = Time taken for output to fall to 50% - Time taken for input to rise to 50%
+Fall Cell Delay time = 4.0773 - 4.05 = 27ps
+```
+
+### Session 3: Tech file labs
+Link to Sky130 Periphery Rules: Sky130 Periphery Rules
+Steps to Download and View the Corrupted SkyWater Process Magic Tech File and Associated Files for DRC Corrections:
+```
+# Navigate to the home directory
+cd
+
+# Download the lab files archive
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+# Extract the contents of the downloaded archive
+tar xfz drc_tests.tgz
+
+# Change to the extracted lab directory
+cd drc_tests
+
+# Display all files and directories in the current directory
+ls -al
+
+# Open the .magicrc configuration file for editing
+gvim .magicrc
+
+# Launch the Magic tool with enhanced graphics
+magic -d XR &
+```
+| ![image](https://github.com/user-attachments/assets/72a09894-783c-42de-984d-dcd67155b8cd) | ![image](https://github.com/user-attachments/assets/c95a0a9b-2f15-4a6f-82a0-b000d76077ef) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+![image](https://github.com/user-attachments/assets/798edf84-3853-4f8a-88af-5651330e709c)
+
+
+**Poly.9 simple rule correction**
+![image](https://github.com/user-attachments/assets/de9c6173-3484-4697-a57b-1b2c92d9b207)
+
 ![image](https://github.com/user-attachments/assets/dd4a30a6-5663-4fb1-886c-8dd5dce5070f)
+New commands inserted in sky130A.tech file to update drc
 ![image](https://github.com/user-attachments/assets/16d39348-bc00-4f49-bd86-e0d96ec9a5ac)
+```
+# Loading updated tech file
+tech load sky130A.tech
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+**After correction**
 
 ![image](https://github.com/user-attachments/assets/e3660b1b-a875-49e9-a8a6-06db6476bb5a)
 
-![image](https://github.com/user-attachments/assets/fc3483ea-df21-44e3-b4ed-f89dc8b324cf)
+**nwell complex rule correction**
 
-![image](https://github.com/user-attachments/assets/787cf7ca-e085-4e89-a23a-a9e312493fe8)
+<img src="https://github.com/user-attachments/assets/fc3483ea-df21-44e3-b4ed-f89dc8b324cf" width="600" />
+
+
+<img src="https://github.com/user-attachments/assets/0b63f06b-57ef-4571-a15c-1acf395ce7a7" width="600" />
+
+
+<img src="https://github.com/user-attachments/assets/cc8a4369-c297-4476-a239-82f1e854caf5" width="600" />
+
+
+<img src="https://github.com/user-attachments/assets/787cf7ca-e085-4e89-a23a-a9e312493fe8" width="600" />
+
 
 
 
