@@ -374,13 +374,13 @@ drc why
 <img src="https://github.com/user-attachments/assets/fc3483ea-df21-44e3-b4ed-f89dc8b324cf" width="600" />
 
 
-<img src="https://github.com/user-attachments/assets/0b63f06b-57ef-4571-a15c-1acf395ce7a7" width="600" />
+<img src="https://github.com/user-attachments/assets/0b63f06b-57ef-4571-a15c-1acf395ce7a7" width="800" />
+
+Changes made in sky130A.tech file to update DRC
+<img src="https://github.com/user-attachments/assets/cc8a4369-c297-4476-a239-82f1e854caf5" width="800" />
 
 
-<img src="https://github.com/user-attachments/assets/cc8a4369-c297-4476-a239-82f1e854caf5" width="600" />
-
-
-<img src="https://github.com/user-attachments/assets/787cf7ca-e085-4e89-a23a-a9e312493fe8" width="600" />
+<img src="https://github.com/user-attachments/assets/787cf7ca-e085-4e89-a23a-a9e312493fe8" width="800" />
 
 
 
