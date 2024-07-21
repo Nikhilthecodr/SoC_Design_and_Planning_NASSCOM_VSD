@@ -385,15 +385,18 @@ Changes made in sky130A.tech file to update DRC
 
  ### Sky130 Day 4: Pre-layout liming analysis and importance of good clock tree
 
+ tracks.info of sky130_fd_sc_hd
+
  ![image](https://github.com/user-attachments/assets/4c5412f2-bfba-4ea0-ac4b-7a1338ad403d)
 
  Condition 1: Input and output ports are at the interaction of vertical and horizontal grid lines
-
- ![image](https://github.com/user-attachments/assets/3b34a3d9-e441-4608-9a37-bd727789b92a)
  
  Condition 2: Width of the standard cell should be odd multiples of x-pitch
+ 
  Condition 3: Height of the standard cells should be odd multiples of y-pitch
  All the 3 conditions are verified
+
+ ![image](https://github.com/user-attachments/assets/3b34a3d9-e441-4608-9a37-bd727789b92a)
  
  ![image](https://github.com/user-attachments/assets/26681fbb-617b-4866-a898-78f1c71c39f4)
  
@@ -403,9 +406,71 @@ Changes made in sky130A.tech file to update DRC
  
  ![image](https://github.com/user-attachments/assets/010abd15-99b5-4c47-a4d2-c6ef2933ef6f)
 
+ To copy generated lef files to 'picorv32a' design 'src' directory
+ ```
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+Modified config.tcl file
+
  ![image](https://github.com/user-attachments/assets/addc2a4d-16b8-49a0-9431-98485daee9a4)
+
+ Synthesis with custom built inverter standard cell
+ 
  ![image](https://github.com/user-attachments/assets/a3b42882-9ca4-44eb-889b-9c971d22f13f)
+
+ **Changes made to reduce the delay**
+ 
+ Observation: Chip area of the module is increased
+ ```
+prep -design picorv32a -tag 21-07_17-09 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+echo $::env(SYNTH_STRATEGY)
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+echo $::env(SYNTH_BUFFERING)
+set ::env(SYNTH_SIZING) 1
+echo $::env(SYNTH_DRIVING_CELL)
+run_synthesis
+```
  ![image](https://github.com/user-attachments/assets/deb3c22f-1031-4560-a98f-69adf1517aee)
+
+ To run Floorplan
+ ```
+init_floorplan
+place_io
+tap_decap_or
+run_placement
+```
+To run placement def in magic 
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+Command for tkcon window to view internal layers of cells
+```
+expand
+```
+**Steps to configure OpenSTA for post-synth timing analysis**
+
+my_base.sdc file
+
+![image](https://github.com/user-attachments/assets/641940f6-3e56-4cdf-932b-301765ea57eb)
+
+pre_sta.conf for automating STA
+
+![image](https://github.com/user-attachments/assets/46ed587e-ee59-4746-8656-478ce8b45d71)
+
+Commands to run STA
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+sta pre_sta.conf
+```
+
+
+
  ![image](https://github.com/user-attachments/assets/a06e9c6d-09f4-43a6-b115-2187236dc20a)
  ![image](https://github.com/user-attachments/assets/2b2d1744-06d0-4a3c-9221-5a03dd1101bf)
  ![image](https://github.com/user-attachments/assets/a91ac080-58ba-46e4-8748-0596123a7795)
