@@ -418,6 +418,20 @@ Modified config.tcl file
 
  ![image](https://github.com/user-attachments/assets/addc2a4d-16b8-49a0-9431-98485daee9a4)
 
+ **Introduction to delay tables**
+
+ ![image](https://github.com/user-attachments/assets/084b4aae-f0a5-45c8-ba57-c14978412101)
+
+ - **Purpose of Delay Tables:**
+Delay tables in Static Timing Analysis (STA) model the propagation delays of signals through various cells in an integrated circuit. They provide pre-characterized data on signal travel times from input to output under different input slew rates and output load capacitances, ensuring accurate timing predictions.
+
+- **Structure of Delay Tables:**
+Delay tables are multi-dimensional arrays with entries for specific combinations of input slew rates and output load capacitances. These entries contain delay values measured during cell characterization, allowing the STA tool to interpolate delays for intermediate conditions and ensure precise timing analysis.
+
+- **CTS Impact:**
+During Clock Tree Synthesis (CTS), delay tables are crucial for accurately modeling the delays introduced by clock buffers and inverters in the clock network. CTS affects the timing of the clock signal distribution, and precise delay tables help STA tools assess the timing impact of the clock tree on the overall circuit performance.
+
+
  Synthesis with custom built inverter standard cell
  
  ![image](https://github.com/user-attachments/assets/a3b42882-9ca4-44eb-889b-9c971d22f13f)
@@ -494,7 +508,7 @@ help replace_cell
 replace_cell _14510_ sky130_fd_sc_hd__or3_4
 report_checks -fields {net cap slew input_pins} -digits 4
  ```
-Final Slack achieved
+Final Slack achieved from -36.63ns to -4.62ns
 
 ![image](https://github.com/user-attachments/assets/8c1f916e-76b1-4604-b642-56b599c70a8f)
 
