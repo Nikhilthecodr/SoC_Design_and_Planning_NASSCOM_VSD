@@ -346,11 +346,12 @@ magic -d XR &
 ```
 | ![image](https://github.com/user-attachments/assets/72a09894-783c-42de-984d-dcd67155b8cd) | ![image](https://github.com/user-attachments/assets/c95a0a9b-2f15-4a6f-82a0-b000d76077ef) |
 |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
-![image](https://github.com/user-attachments/assets/798edf84-3853-4f8a-88af-5651330e709c)
+
 
 
 **Poly.9 simple rule correction**
-![image](https://github.com/user-attachments/assets/de9c6173-3484-4697-a57b-1b2c92d9b207)
+
+![image](https://github.com/user-attachments/assets/798edf84-3853-4f8a-88af-5651330e709c)
 
 ![image](https://github.com/user-attachments/assets/dd4a30a6-5663-4fb1-886c-8dd5dce5070f)
 New commands inserted in sky130A.tech file to update drc
@@ -381,6 +382,30 @@ Changes made in sky130A.tech file to update DRC
 
 
 <img src="https://github.com/user-attachments/assets/787cf7ca-e085-4e89-a23a-a9e312493fe8" width="800" />
+
+ ### Sky130 Day 4: Pre-layout liming analysis and importance of good clock tree
+
+ ![image](https://github.com/user-attachments/assets/4c5412f2-bfba-4ea0-ac4b-7a1338ad403d)
+
+ Condition 1: Input and output ports are at the interaction of vertical and horizontal grid lines
+
+ ![image](https://github.com/user-attachments/assets/3b34a3d9-e441-4608-9a37-bd727789b92a)
+ 
+ Condition 2: Width of the standard cell should be odd multiples of x-pitch
+ Condition 3: Height of the standard cells should be odd multiples of y-pitch
+ All the 3 conditions are verified
+ 
+ ![image](https://github.com/user-attachments/assets/26681fbb-617b-4866-a898-78f1c71c39f4)
+ 
+ ![image](https://github.com/user-attachments/assets/d6b858af-2c74-4f77-ade1-56a47d011b15)
+ 
+ In lef file declaring layer as ports is considered as pins of the macro in order
+ 
+ ![image](https://github.com/user-attachments/assets/010abd15-99b5-4c47-a4d2-c6ef2933ef6f)
+
+
+
+
 
 
 
