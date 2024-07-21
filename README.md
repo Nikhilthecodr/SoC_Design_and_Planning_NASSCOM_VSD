@@ -12,7 +12,7 @@ An introduction to the QFN-48 package, covering its components including the chi
 | ![image](https://github.com/user-attachments/assets/d561bf42-1f37-4813-bd08-3f448210c9f1) | ![image](https://github.com/user-attachments/assets/d32de5bb-2ba1-4b8f-9456-b19df112f707) |
 |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
-#### Introduction to RISC-V (SKY_L2)
+#### Introduction to RISC-V 
 A comprehensive look at the RISC-V architecture, its design principles, and its significance in modern hardware development.
 The session provided a detailed analysis of RISC-V instruction sets, the critical role of the compiler in the development process, and the methodology for converting the PicoRV32 RTL (Register Transfer Level) core into physical layout and hardware implementation.
 
@@ -394,6 +394,7 @@ Changes made in sky130A.tech file to update DRC
  Condition 2: Width of the standard cell should be odd multiples of x-pitch
  
  Condition 3: Height of the standard cells should be odd multiples of y-pitch
+ 
  All the 3 conditions are verified
 
  ![image](https://github.com/user-attachments/assets/3b34a3d9-e441-4608-9a37-bd727789b92a)
@@ -421,6 +422,8 @@ Modified config.tcl file
  
  ![image](https://github.com/user-attachments/assets/a3b42882-9ca4-44eb-889b-9c971d22f13f)
 
+ ![image](https://github.com/user-attachments/assets/deb3c22f-1031-4560-a98f-69adf1517aee)
+
  **Changes made to reduce the delay**
  
  Observation: Chip area of the module is increased
@@ -435,8 +438,9 @@ set ::env(SYNTH_SIZING) 1
 echo $::env(SYNTH_DRIVING_CELL)
 run_synthesis
 ```
- ![image](https://github.com/user-attachments/assets/deb3c22f-1031-4560-a98f-69adf1517aee)
 
+ ![image](https://github.com/user-attachments/assets/a06e9c6d-09f4-43a6-b115-2187236dc20a)
+ 
  To run Floorplan
  ```
 init_floorplan
@@ -448,10 +452,16 @@ To run placement def in magic
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 ```
+ ![image](https://github.com/user-attachments/assets/2b2d1744-06d0-4a3c-9221-5a03dd1101bf)
+ 
+ ![image](https://github.com/user-attachments/assets/a91ac080-58ba-46e4-8748-0596123a7795)
+ 
 Command for tkcon window to view internal layers of cells
 ```
 expand
 ```
+ ![image](https://github.com/user-attachments/assets/73200597-c736-4588-9226-9ff27caefcd9)
+
 **Steps to configure OpenSTA for post-synth timing analysis**
 
 my_base.sdc file
@@ -468,18 +478,26 @@ Commands to run STA
 cd Desktop/work/tools/openlane_working_dir/openlane
 sta pre_sta.conf
 ```
-
-
-
- ![image](https://github.com/user-attachments/assets/a06e9c6d-09f4-43a6-b115-2187236dc20a)
- ![image](https://github.com/user-attachments/assets/2b2d1744-06d0-4a3c-9221-5a03dd1101bf)
- ![image](https://github.com/user-attachments/assets/a91ac080-58ba-46e4-8748-0596123a7795)
- ![image](https://github.com/user-attachments/assets/73200597-c736-4588-9226-9ff27caefcd9)
  ![image](https://github.com/user-attachments/assets/22e89e36-8a07-422a-ad8f-f67cc4db1a74)
+ 
  ![image](https://github.com/user-attachments/assets/23a353e8-8c87-4087-89d8-55bd8bc307ce)
+ 
  ![image](https://github.com/user-attachments/assets/fd8d4162-e775-43cb-8d08-75b34b2b0a06)
+ 
+ Make suitable timing ECO fixes to remove all violations. Repeat the process untill violations are removed.
 
- ![image](https://github.com/user-attachments/assets/8e27855f-7cbe-4757-9ff2-21104ce49a76)
+Commands
+ ```
+report_net -connections _11672_
+help replace_cell
+#replace_cell instance standard_cell_name
+replace_cell _14510_ sky130_fd_sc_hd__or3_4
+report_checks -fields {net cap slew input_pins} -digits 4
+ ```
+Final Slack achieved
+
+![image](https://github.com/user-attachments/assets/8c1f916e-76b1-4604-b642-56b599c70a8f)
+
  
 
 
