@@ -410,6 +410,15 @@ Changes made in sky130A.tech file to update DRC
  ![image](https://github.com/user-attachments/assets/2b2d1744-06d0-4a3c-9221-5a03dd1101bf)
  ![image](https://github.com/user-attachments/assets/a91ac080-58ba-46e4-8748-0596123a7795)
  ![image](https://github.com/user-attachments/assets/73200597-c736-4588-9226-9ff27caefcd9)
+ ![image](https://github.com/user-attachments/assets/22e89e36-8a07-422a-ad8f-f67cc4db1a74)
+ ![image](https://github.com/user-attachments/assets/23a353e8-8c87-4087-89d8-55bd8bc307ce)
+ ![image](https://github.com/user-attachments/assets/fd8d4162-e775-43cb-8d08-75b34b2b0a06)
+
+ ![image](https://github.com/user-attachments/assets/8e27855f-7cbe-4757-9ff2-21104ce49a76)
+ 
+
+
+
 
 
 
