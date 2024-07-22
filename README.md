@@ -1,27 +1,36 @@
-# SoC_Design_and_Planning_NASSCOM_VSD
-#####  A two-week workshop on digital VLSI SoC design and planning, covering the complete RTL to GDSII flow, organized by VSD in collaboration with NASSCOM.
+# SoC Design and Planning Workshop by NASSCOM and VSD
+
+## Workshop Overview
+A two-week workshop on digital VLSI SoC design and planning, covering the complete RTL to GDSII flow, organized by VSD in collaboration with NASSCOM.
 
 ### Sky130 Day 1: Introduction to Open-Source EDA, OpenLANE, and Sky130 PDK
 
-### Session 1: Communicating with Computers 
+#### Session 1: Communicating with Computers
 An exploration of the foundational principles of how computers interpret and execute instructions, essential for understanding hardware design and development. The session included examples using Arduino ICs and outlined the specific areas of focus for the workshop.
 
+---
 
-#### Overview of QFN-48 Package, Chip, Pads, Core, Die, and IPs 
+#### Overview of QFN-48 Package, Chip, Pads, Core, Die, and IPs
 An introduction to the QFN-48 package, covering its components including the chip, pads, core, die, and intellectual properties (IPs).
-| ![image](https://github.com/user-attachments/assets/d561bf42-1f37-4813-bd08-3f448210c9f1) | ![image](https://github.com/user-attachments/assets/d32de5bb-2ba1-4b8f-9456-b19df112f707) |
-|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
-#### Introduction to RISC-V 
-A comprehensive look at the RISC-V architecture, its design principles, and its significance in modern hardware development.
-The session provided a detailed analysis of RISC-V instruction sets, the critical role of the compiler in the development process, and the methodology for converting the PicoRV32 RTL (Register Transfer Level) core into physical layout and hardware implementation.
+| QFN-48 Package | QFN-48 Components |
+|----------------|-------------------|
+| ![QFN-48 Package](https://github.com/user-attachments/assets/d561bf42-1f37-4813-bd08-3f448210c9f1) | ![QFN-48 Components](https://github.com/user-attachments/assets/d32de5bb-2ba1-4b8f-9456-b19df112f707) |
 
-<img src="https://github.com/user-attachments/assets/8d7b3ccc-f550-4d0f-b01b-60d48a73419e" alt="image" width="700">
+---
 
-#### Transitioning from Software Applications to Hardware 
+#### Introduction to RISC-V
+A comprehensive look at the RISC-V architecture, its design principles, and its significance in modern hardware development. The session provided a detailed analysis of RISC-V instruction sets, the critical role of the compiler in the development process, and the methodology for converting the PicoRV32 RTL (Register Transfer Level) core into physical layout and hardware implementation.
+
+![RISC-V Architecture](https://github.com/user-attachments/assets/8d7b3ccc-f550-4d0f-b01b-60d48a73419e)
+
+---
+
+#### Transitioning from Software Applications to Hardware
 A discussion on how software applications are translated into hardware implementations, emphasizing the importance of understanding both software and hardware paradigms.
 
-<img src="https://github.com/user-attachments/assets/e8217f52-880c-4d84-80df-1bdd2d1c6631" alt="image" width="700">
+![Software to Hardware Transition](https://github.com/user-attachments/assets/e8217f52-880c-4d84-80df-1bdd2d1c6631)
+
 
 
 ### Session 2: Introduction to SoC design and OpenLANE
@@ -138,10 +147,13 @@ To get into the openlane directory and invoke OpenLANE type following commands:
 
     
   ![image](https://github.com/user-attachments/assets/53a0ab0e-7fa4-4c37-8424-45f052c10980)
+  
   ![image](https://github.com/user-attachments/assets/20c5a347-db56-4e8c-b78d-9805f447bda3)
 
-   | ![image](https://github.com/user-attachments/assets/c04363c1-58c0-4a48-a097-e55f1dd7b7a2) | ![image](https://github.com/user-attachments/assets/5a786780-aaa2-42e1-9ed0-04877e8d6e37) |
-  |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+  ![image](https://github.com/user-attachments/assets/c04363c1-58c0-4a48-a097-e55f1dd7b7a2) 
+   
+  ![image](https://github.com/user-attachments/assets/5a786780-aaa2-42e1-9ed0-04877e8d6e37) 
+ 
 
  ### Sky130 Day 2: Good floorplan vs bad floorplan and introduction to library cells
  ### Session 1: Chip Floor Planning Considerations**
