@@ -520,9 +520,46 @@ help replace_cell
 replace_cell _14510_ sky130_fd_sc_hd__or3_4
 report_checks -fields {net cap slew input_pins} -digits 4
  ```
-Final Slack achieved from -36.63ns to -4.62ns
+Final Slack achieved from -36.63ns to -4.4238ns
 
 ![image](https://github.com/user-attachments/assets/8c1f916e-76b1-4604-b642-56b599c70a8f)
+
+![image](https://github.com/user-attachments/assets/63378473-652f-45a1-83b7-4d11b7180b8a)
+
+
+Session 3
+
+ | ![image](https://github.com/user-attachments/assets/df8c106b-b062-41ef-bb03-06cebdc7a31a) | ![image](https://github.com/user-attachments/assets/9475282f-9f1e-4635-891b-d809d3799229) |
+
+ clock net shielding
+
+ cts results
+ ![image](https://github.com/user-attachments/assets/02e6a198-d1d9-41b2-982c-b7bcc4a3d4f6)
+
+ procs found in cts.tcl
+ ![image](https://github.com/user-attachments/assets/8f6860fd-022a-460d-9809-b97dacfddb92)
+
+ ![image](https://github.com/user-attachments/assets/19cc8d59-b677-484b-b504-673139a73b4b)
+
+ Post_synthesis slack results
+ 
+ ![image](https://github.com/user-attachments/assets/cffce61d-8295-4ee1-99b7-80280056497c)
+
+ Hold slack
+ 
+ ![image](https://github.com/user-attachments/assets/8180fca9-57de-45ac-9b00-4eaac418f1d9)
+
+ Setup slack
+ 
+ ![image](https://github.com/user-attachments/assets/3544a98a-e280-4e04-ac6c-cc80209680f3)
+
+
+
+
+ 
+ 
+
+
 
  
 
