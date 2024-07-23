@@ -15,6 +15,7 @@ An introduction to the QFN-48 package, covering its components including the chi
 
 
 | ![QFN-48 Package](https://github.com/user-attachments/assets/d561bf42-1f37-4813-bd08-3f448210c9f1) | ![QFN-48 Components](https://github.com/user-attachments/assets/d32de5bb-2ba1-4b8f-9456-b19df112f707) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
 ---
 
