@@ -153,6 +153,18 @@ To get into the openlane directory and invoke OpenLANE type following commands:
   ![image](https://github.com/user-attachments/assets/c04363c1-58c0-4a48-a097-e55f1dd7b7a2) 
    
   ![image](https://github.com/user-attachments/assets/5a786780-aaa2-42e1-9ed0-04877e8d6e37) 
+
+  **Flip flop ratio calculation**
+
+  ![image](https://github.com/user-attachments/assets/bcc66742-cd14-417f-8bc0-847a978335b2)
+
+  ![image](https://github.com/user-attachments/assets/62ff74b0-70c2-4612-b482-8d568424eb1c)
+
+  ```
+Flip Flop ratio = 1613 / 14876 = 0.108 or 10.8%
+
+```
+
  
 
  ### Sky130 Day 2: Good floorplan vs bad floorplan and introduction to library cells
@@ -182,12 +194,68 @@ To get into the openlane directory and invoke OpenLANE type following commands:
      - Define areas where logical cells cannot be placed to avoid interference with critical paths.
      - Ensure that blockages do not hinder the placement of essential cells and that routing is feasible.
     
-    
+Configuration variables in floorplan
+
 |![image](https://github.com/user-attachments/assets/8172f17f-1d2b-432d-bdb8-15f21371b202) | ![image](https://github.com/user-attachments/assets/a2841ce0-0cba-4003-a5d5-322935c8bbac) |
  |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
-![image](https://github.com/user-attachments/assets/7d90293c-9079-4c35-b565-e1cc250b9868)
+ Commands to run floorplan
+
+ ```
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+run_synthesis
+run_floorplan
+```
+To Calculate the die area in microns 
+
 ![image](https://github.com/user-attachments/assets/485d7563-379a-4828-af8b-93ef73708804)
+
+1. **Conversion Factor:**
+   - 1000 unit distance = 1 Micron
+
+2. **Distance Calculation:**
+   - Distance in Micron = Value / 1000
+
+3. **Die Dimensions:**
+   - Die Width in Micron = 660685 / 1000 = 660.685 Microns
+   - Die Height in Micron = 671405 / 1000 = 671.405 Microns
+
+4. **Die Area Calculation:**
+   - Area of Die in Micron² = 660.685 * 671.405 Microns²
+
+**floorplan def in magic tool**
+
+Commands
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/20-07_08-32/results/floorplan/
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
+![image](https://github.com/user-attachments/assets/56c0364c-4499-4543-9159-da3fa09b81f7)
+
+![image](https://github.com/user-attachments/assets/3b0ca512-62cf-4d4c-bdb7-25bd9db2eb9b)
+
+Command to run placement
+
+```
+run_placement
+```
+![image](https://github.com/user-attachments/assets/0782627a-ee44-4840-9bf8-f73e0450b18e)
+
+To open generated placement def in magic tool
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/20-07_08-32/results/placement/
+
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+![image](https://github.com/user-attachments/assets/8ae209fd-c1de-4f1c-b014-3426164f8df6)
+
+![image](https://github.com/user-attachments/assets/147027b0-16e1-4d74-99c1-03f894dfd253)
+
+
+
 
  ### Sky130 Day 3: Design library cell using Magic layout and ngspice characteriztaion
  
