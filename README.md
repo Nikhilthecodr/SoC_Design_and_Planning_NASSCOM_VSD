@@ -13,8 +13,7 @@ An exploration of the foundational principles of how computers interpret and exe
 #### Overview of QFN-48 Package, Chip, Pads, Core, Die, and IPs
 An introduction to the QFN-48 package, covering its components including the chip, pads, core, die, and intellectual properties (IPs).
 
-| QFN-48 Package | QFN-48 Components |
-|----------------|-------------------|
+
 | ![QFN-48 Package](https://github.com/user-attachments/assets/d561bf42-1f37-4813-bd08-3f448210c9f1) | ![QFN-48 Components](https://github.com/user-attachments/assets/d32de5bb-2ba1-4b8f-9456-b19df112f707) |
 
 ---
@@ -527,11 +526,23 @@ Final Slack achieved from -36.63ns to -4.4238ns
 ![image](https://github.com/user-attachments/assets/63378473-652f-45a1-83b7-4d11b7180b8a)
 
 
-Session 3
+**Session 3: Clock tree synthesis TritonCTC and signal integrity**
 
  | ![image](https://github.com/user-attachments/assets/df8c106b-b062-41ef-bb03-06cebdc7a31a) | ![image](https://github.com/user-attachments/assets/9475282f-9f1e-4635-891b-d809d3799229) |
+ |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+ 
+**Clock Tree Synthesis (CTS)**
+Purpose:
 
- clock net shielding
+- To distribute the clock signal evenly to all sequential elements (flip-flops) in the design.
+- To ensure minimal clock skew and latency for reliable operation and meeting timing constraints.
+
+**Clock Net Shielding**
+Purpose:
+
+- To protect the clock net from noise and interference from neighboring signal nets.
+- To maintain signal integrity and ensure the clock signal is delivered cleanly and without distortion.
+
 
  cts results
  ![image](https://github.com/user-attachments/assets/02e6a198-d1d9-41b2-982c-b7bcc4a3d4f6)
@@ -543,6 +554,24 @@ Session 3
 
  Post_synthesis slack results
  
+Commands to run in OpenLANE
+ ```
+openroad
+read_lef /openLANE_flow/designs/picorv32a/runs/21-07_17-09/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/21-07_17-09/results/cts/picorv32a.cts.def
+write_db pico_cts.db
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/21-07_17-09/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+help report_checks
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+exit
+
+```
+ 
  ![image](https://github.com/user-attachments/assets/cffce61d-8295-4ee1-99b7-80280056497c)
 
  Hold slack
@@ -553,20 +582,114 @@ Session 3
  
  ![image](https://github.com/user-attachments/assets/3544a98a-e280-4e04-ac6c-cc80209680f3)
 
+### Sky130 Day 5: Final steps for RTL2GDS using tritonRoute and openSTA
+
+**Session 1: Routing and Design Rule check**
+
+| ![image](https://github.com/user-attachments/assets/7e4d49db-5ede-4102-a1b2-ef33137b25d4)  | ![image](https://github.com/user-attachments/assets/57888211-da85-4b09-b335-ad4d08d94e47) |
+ |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+
+| ![image](https://github.com/user-attachments/assets/1be7dfb8-23e9-468a-8a6e-bb53755922da) |![image](https://github.com/user-attachments/assets/8280a86a-50bd-4627-a1e1-99a3785dc84e)|
+ |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+
+
+**Routing**  
+Purpose:
+
+- **Interconnect Creation:** Routing connects various components on an IC, such as transistors, capacitors, and other devices, to form the desired electrical circuits.
+- **Performance Optimization:** It aims to optimize performance metrics like signal delay, power consumption, and area.
+
+Key Objectives:
+
+- **Global Routing:** Determines a coarse route for each net, identifying which regions of the chip the wires will pass through without specifying exact paths.
+- **Detailed Routing:** Specifies the exact paths for the wires within the regions defined by global routing, ensuring that all design rules are followed and there are no violations.
+
+**Lee's Algorithm (Maze Routing Algorithm)**  
+Purpose:
+
+- **Pathfinding:** Lee's algorithm finds a path between a start point and an end point in a grid, ensuring that the path is feasible and avoids obstacles.
+- **Guarantee of Solution:** The algorithm guarantees to find the shortest path if one exists, making it a reliable method for maze routing.
+
+Key Objectives:
+
+- **Breadth-First Search:** Lee's algorithm uses a breadth-first search (BFS) approach to explore all possible paths layer by layer, ensuring that the shortest path is found.
+- **Wave Propagation:** The algorithm works by propagating a wave from the start point and marking each cell with the distance from the start, until it reaches the end point or determines that no path exists.
+
+**Design Rule Checking (DRC)**  
+Purpose:
+
+- **Rule Compliance:** DRC ensures that the IC design adheres to all the manufacturing process rules and constraints. This helps avoid issues that could cause manufacturing defects or functional problems.
+- **Design Integrity:** It validates the design layout to ensure that all components are properly placed and routed according to the design rules, maintaining the integrity of the design.
+
+Key Objectives:
+
+- **Error Detection:** Identify and flag design rule violations, such as spacing errors between metal layers, minimum width violations, and other layout issues that could affect manufacturing or performance.
+- **Design Validation:** Ensure that the layout is feasible for fabrication, preventing issues like short circuits, open circuits, and other potential defects that could impact the final product's functionality and reliability.
+
 
  Visualisation of power pins, straps and rails
  
- ![image](https://github.com/user-attachments/assets/c4cddfbc-c7a4-4343-919f-0753a7e4ef3e)
-
- ![image](https://github.com/user-attachments/assets/7fa537ef-7c39-4a4d-aeb4-bf021c4863d0)
+|  ![image](https://github.com/user-attachments/assets/c4cddfbc-c7a4-4343-919f-0753a7e4ef3e) | ![image](https://github.com/user-attachments/assets/7fa537ef-7c39-4a4d-aeb4-bf021c4863d0) |
+|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
 | ![image](https://github.com/user-attachments/assets/5c7ee1ec-f799-4821-b2d1-d6edf7417b01) | ![image](https://github.com/user-attachments/assets/a750786a-f822-437e-b0b5-a80e030d98f1) |
+ |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
 | ![image](https://github.com/user-attachments/assets/378326b0-ac1a-450c-8ce8-13142294e221) | ![image](https://github.com/user-attachments/assets/a30e7ae9-384e-40a4-ba79-1bc459243f70) |
+ |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
 | ![image](https://github.com/user-attachments/assets/f9ea0063-87c3-4f81-88c5-fda5fc371ae7) | ![image](https://github.com/user-attachments/assets/ebf65e36-7f97-4106-8819-754a9a0c3a3f) |
+ |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 
-| ![image](https://github.com/user-attachments/assets/2eb14afe-cfef-42be-949e-a413009bd17d) |
+| ![image](https://github.com/user-attachments/assets/2eb14afe-cfef-42be-949e-a413009bd17d) |                                                                                           |
+
+ 
+ **Commands for the generation of Power Distribution Network (PDN)**
+ 
+ ```
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+set ::env(SYNTH_SIZING) 1
+run_synthesis
+init_floorplan
+place_io
+tap_decap_or
+run_placement
+run_cts
+gen_pdn
+run_routing
+```
+**Results of generation of PDN**
+
+![image](https://github.com/user-attachments/assets/acaf531b-528c-46ad-8e25-a991788d533f)
+
+![image](https://github.com/user-attachments/assets/fcb181ec-1498-434b-92e1-646ab414d6ce)
+
+![image](https://github.com/user-attachments/assets/b4860254-5f24-4b76-b71c-f3ab157dbbf0)
+
+**Results of succesfull routing**
+
+![image](https://github.com/user-attachments/assets/a5922421-2bb3-4430-b2c8-026e26775cee)
+
+![image](https://github.com/user-attachments/assets/21bb048d-51e7-4ddf-940b-e27a864dee0d)
+
+![image](https://github.com/user-attachments/assets/1dfdfe6c-822c-4469-a2e3-ae5c49faaacc)
+
+
+SPEF Extraction
+
+![image](https://github.com/user-attachments/assets/4db1198f-b694-4efe-8fff-1e804bf09f47)
+
+Post route STA
+
+![image](https://github.com/user-attachments/assets/50c83daa-6b29-4216-8352-1f3e04e2801d)
+
+
+
 
 
 
