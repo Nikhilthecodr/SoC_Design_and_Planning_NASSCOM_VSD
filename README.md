@@ -554,6 +554,24 @@ Session 3
  ![image](https://github.com/user-attachments/assets/3544a98a-e280-4e04-ac6c-cc80209680f3)
 
 
+ Visualisation of power pins, straps and rails
+ 
+ ![image](https://github.com/user-attachments/assets/c4cddfbc-c7a4-4343-919f-0753a7e4ef3e)
+
+ ![image](https://github.com/user-attachments/assets/7fa537ef-7c39-4a4d-aeb4-bf021c4863d0)
+
+| ![image](https://github.com/user-attachments/assets/5c7ee1ec-f799-4821-b2d1-d6edf7417b01) | ![image](https://github.com/user-attachments/assets/a750786a-f822-437e-b0b5-a80e030d98f1) |
+
+| ![image](https://github.com/user-attachments/assets/378326b0-ac1a-450c-8ce8-13142294e221) | ![image](https://github.com/user-attachments/assets/a30e7ae9-384e-40a4-ba79-1bc459243f70)|
+
+
+
+
+
+
+ 
+
+
 
 
  
