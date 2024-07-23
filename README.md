@@ -754,11 +754,46 @@ run_routing
 
 SPEF Extraction
 
+Commands
+```
+cd Desktop/work/tools/SPEF_EXTRACTOR
+
+python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-07_17-09/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-07_17-09/results/routing/picorv32a.def
+```
+![image](https://github.com/user-attachments/assets/50c83daa-6b29-4216-8352-1f3e04e2801d)
+
 ![image](https://github.com/user-attachments/assets/4db1198f-b694-4efe-8fff-1e804bf09f47)
 
 Post route STA
 
-![image](https://github.com/user-attachments/assets/50c83daa-6b29-4216-8352-1f3e04e2801d)
+**Post-Route OpenSTA timing analysis**
+
+Commands to be run in OpenLANE
+
+```
+openroad
+read_lef /openLANE_flow/designs/picorv32a/runs/21-07_17-09/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/21-07_17-09/results/routing/picorv32a.def
+write_db pico_route.db
+read_db pico_route.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/21-07_17-09/results/synthesis/picorv32a.synthesis_preroute.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+read_spef /openLANE_flow/designs/picorv32a/runs/21-07_17-09/results/routing/picorv32a.spef
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+exit
+
+```
+
+![image](https://github.com/user-attachments/assets/c2917835-721c-4bb8-a57f-79671702b4c5)
+
+![image](https://github.com/user-attachments/assets/0ce415c1-5a01-4a94-a1e5-6f62d29c1882)
+
+
+
+
 
 
 
