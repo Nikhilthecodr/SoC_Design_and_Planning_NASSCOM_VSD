@@ -258,13 +258,15 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 
  ### Sky130 Day 3: Design library cell using Magic layout and ngspice characteriztaion
+
+ ### Session 1: CMOS inverter ngspice simulations**
  
 **IO Spacer Revision**
  ![image](https://github.com/user-attachments/assets/f0b038c8-8760-4155-8b36-9f530e3211ef)
 
  ![image](https://github.com/user-attachments/assets/f45f25a3-e98d-4867-ad6a-ff4b52d68be3)
 
- **spice deck creation and simulations**
+ **Spice deck creation and simulations**
  
 | ![image](https://github.com/user-attachments/assets/c7d13525-09f2-461a-a941-673ffa5fdb0a) | ![image](https://github.com/user-attachments/assets/f080f297-6be0-409b-b07f-b90557d4d7d3) |
 |-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
@@ -383,6 +385,7 @@ Spice File
 ![image](https://github.com/user-attachments/assets/1ab0333e-0a4a-40fd-92ef-5a4e09f6d773)
 
 ![image](https://github.com/user-attachments/assets/fde80788-a4e0-4af3-8c6d-b2c0cf5b56f0)
+
 ![image](https://github.com/user-attachments/assets/f7ebe9ab-8b90-4887-aaa0-ef71fbcd37bd)
 
 ```
